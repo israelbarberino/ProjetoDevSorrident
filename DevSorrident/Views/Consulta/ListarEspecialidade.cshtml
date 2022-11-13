@@ -1,0 +1,32 @@
+﻿
+@model IEnumerable<DevSorrident.Models.ModelEspecialidade>
+
+<h2 style="text-align:center; margin-top:200px;">Especialidades Cadastradas</h2>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codEsp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.especialidade)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="black">
+            <td>
+                @Html.DisplayFor(modelItem => item.codEsp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.especialidade)
+            </td>
+
+            <td>
+                @Html.ActionLink("Atualizar", "EditarEspecialidade", new { id = item.codEsp })
+            </td>
+        </tr>
+    }
+
+</table>

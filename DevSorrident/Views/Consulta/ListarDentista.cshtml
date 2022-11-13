@@ -1,0 +1,40 @@
+﻿
+@model IEnumerable<DevSorrident.Models.ModelDentista>
+
+
+<h2 style="text-align:center; margin-top:200px;">Dentistas Cadastrados</h2>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codDen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomeDen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codEsp)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="black">
+            <td>
+                @Html.DisplayFor(modelItem => item.codDen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomeDen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.especialidade)
+            </td>
+
+            <td>
+                @Html.ActionLink("Atualizar", "EditarDentista", new { id = item.codDen }) |
+                @Html.ActionLink("Excluir", "ExcluirDentista", new { id = item.codDen }, new { onclick = "return confirm('Deseja realmente excluir?');" })
+            </td>
+        </tr>
+    }
+
+</table>

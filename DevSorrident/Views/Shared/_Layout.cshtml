@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.DisplayText("Dev Sorrident")
+            </div>
+
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Home", "Home")</li>
+
+                    @if (Session["tipologado2"] != null)
+                    {
+                        <li>@Html.ActionLink("Ficha de Atendimento", "CadAtendimento", "Adm")</li>
+
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Cadastrar <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Paciente", "CadPaciente", "Adm")</li>
+                                <li>@Html.ActionLink("Dentista", "CadDentista", "Adm")</li>
+                                <li>@Html.ActionLink("Especialidade", "CadEspecialidade", "Adm")</li>
+                                <li>@Html.ActionLink("Usuário", "CadLogin", "Adm")</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Consultar Dados <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Paciente", "ListarPaciente", "Consulta")</li>
+                                <li>@Html.ActionLink("Dentista", "ListarDentista", "Consulta")</li>
+                                <li>@Html.ActionLink("Especialidade", "ListarEspecialidade", "Consulta")</li>
+                                <li>@Html.ActionLink("Atendimentos", "ListarAtendimentos", "Consulta")</li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Meu Aplicativo ASP.NET</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

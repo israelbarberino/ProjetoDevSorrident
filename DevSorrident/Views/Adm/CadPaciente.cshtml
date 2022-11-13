@@ -1,0 +1,95 @@
+﻿@model DevSorrident.Models.ModelPaciente
+
+@{
+    ViewBag.Title = "Cadastrar Novo Paciente";
+}
+<h2 style="text-align:center;">Cadastro de Paciente</h2>
+
+<div class="center">
+    @using (Html.BeginForm("CadPaciente", "Adm", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group space-around-flex">
+                <div class="">
+                    @Html.LabelFor(model => model.nomePac, htmlAttributes: new { @class = "control-label col-md-2" })
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.nomePac, new { htmlAttributes = new { @class = "form-control", @MaxLength = "100", @MinLength="0" ,placeholder = "Nome do Paciente" } })
+                    @Html.ValidationMessageFor(model => model.nomePac, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group space-around-flex">
+                <div class="">
+                    @Html.LabelFor(model => model.cpfPac, htmlAttributes: new { @class = "control-label col-md-2" })
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.cpfPac, new { htmlAttributes = new { @class = "form-control", @MaxLength = "14", @MinLength = "14", placeholder = "000.000.000-00" } })
+                    @Html.ValidationMessageFor(model => model.cpfPac, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group center">
+                <div>
+                    @Html.LabelFor(model => model.cepPac, htmlAttributes: new { @class = "control-label col-md-2" })
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.cepPac, new { htmlAttributes = new { @class = "form-control", @MaxLength = "9", @MinLength = "9", placeholder = "00000-000" } })
+                    @Html.ValidationMessageFor(model => model.cepPac, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group center">
+                <div>
+                    @Html.LabelFor(model => model.emailPac, htmlAttributes: new { @class = "control-label col-md-2" })
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.emailPac, new { htmlAttributes = new { @class = "form-control", @MaxLength = "50", @MinLength = "1", placeholder = "email@email.com" } })
+                    @Html.ValidationMessageFor(model => model.emailPac, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group center">
+                <div>
+                    @Html.LabelFor(model => model.telefonePac, htmlAttributes: new { @class = "control-label col-md-2" })
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.telefonePac, new { htmlAttributes = new { @class = "form-control", @MaxLength = "14", @MinLength = "13", placeholder = "(XX)00000-0000" } })
+                    @Html.ValidationMessageFor(model => model.telefonePac, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group center">
+                <div>
+                    @Html.LabelFor(model => model.sexoPac, htmlAttributes: new { @class = "control-label col-md-2" })
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.sexoPac, new { htmlAttributes = new { @class = "form-control", @MaxLength = "1", @MinLength = "1", placeholder = "Sexo" } })
+                    @Html.ValidationMessageFor(model => model.sexoPac, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group center">
+                <div class="col-md-10">
+                    @ViewBag.msg <br />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Cadastrar Paciente" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+<br />
+@Html.ActionLink("Listar Pacientes", "ConsultaPaciente", "Home") | @Html.ActionLink("Voltar", "Home", "Home")
+

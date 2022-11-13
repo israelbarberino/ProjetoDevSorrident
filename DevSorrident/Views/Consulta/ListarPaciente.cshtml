@@ -1,0 +1,56 @@
+﻿@model IEnumerable<DevSorrident.Models.ModelPaciente>
+
+<h2 style="text-align:center; margin-top:200px;">Pacientes Cadastrados</h2>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codPac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomePac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cpfPac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cepPac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefonePac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emailPac)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="black">
+            <td>
+                @Html.DisplayFor(modelItem => item.codPac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomePac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cpfPac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cepPac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefonePac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.emailPac)
+            </td>
+
+            <td>
+                @Html.ActionLink("Atualizar", "EditarPaciente", new { id = item.codPac }) |
+                @Html.ActionLink("Excluir", "ExcluirPaciente", new { id = item.codPac }, new { onclick = "return confirm('Deseja realmente excluir?');" })
+            </td>
+        </tr>
+    }
+
+</table>

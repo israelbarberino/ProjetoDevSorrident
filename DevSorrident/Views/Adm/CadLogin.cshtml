@@ -1,0 +1,39 @@
+﻿
+@model DevSorrident.Models.ModelLogin
+
+@{
+    ViewBag.Title = "CadLogin";
+
+    List<string> Tipo = new List<string>();
+    Tipo.Add("1");
+    Tipo.Add("2");
+}
+
+<h2>Cadastro de Login</h2>
+
+@using (Html.BeginForm("CadLogin", "Adm", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.LabelFor(m => m.usuario)
+    <br />
+    @Html.EditorFor(m => m.usuario)
+    <br />
+    <br />
+
+    @Html.LabelFor(m => m.senha)
+    <br />
+    @Html.EditorFor(m => m.senha)
+    <br />
+    <br />
+    @Html.LabelFor(m => m.tipo)
+    <br />
+    @Html.DropDownListFor(m => m.tipo, new MultiSelectList(Tipo))
+    <br />
+    <br />
+
+    <input type="submit" value="Cadastrar" name="btnCad" />
+}
+
+@ViewBag.mssge
+<br />
+@Html.ActionLink("Listar usuários", "ConsultaLogin", "Adm") | @Html.ActionLink("Voltar", "Index", "Home")
+

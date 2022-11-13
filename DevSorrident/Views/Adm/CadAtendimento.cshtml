@@ -1,0 +1,48 @@
+﻿@model DevSorrident.Models.ModelAtendimento
+
+@{
+    ViewBag.Title = "Cadastrar Atendimento";
+}
+
+<h2 style="text-align:center;">Novo Atendimento</h2>
+<hr />
+<div class="center">
+    @using (Html.BeginForm("CadAtendimento", "Adm", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="editor-label">
+            @Html.LabelFor(m => m.dataAten)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.dataAten, new { htmlAttributes = new { @type = "date" } })
+        </div>
+        <br />
+        <div class="editor-label">
+            @Html.LabelFor(m => m.horaDen)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.horaDen, new { htmlAttributes = new { @type = "time" } })
+        </div>
+        <br /><!--Editor for = caixa de texto (Input)-->
+        @Html.LabelFor(m => m.codPac);
+        <br />
+        @Html.DropDownList("paciente", "Escolha o Paciente");
+        <br />
+        <br />
+        @Html.LabelFor(m => m.codDen);
+        <br />
+        @Html.DropDownList("dentista", "Escolha o Dentista");
+        <br />
+        <br />
+        <br />
+
+        <input type="submit" value="Cadastrar Atendimento" class="btn btn-success" />
+
+    }
+
+    @ViewBag.msg
+</div>
+
+<fotter margin-top="20px">
+    <br /><br />
+    <button>@Html.ActionLink("Voltar", "Home", "Home")</button>
+</fotter>
